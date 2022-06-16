@@ -1,5 +1,8 @@
 set nocompatible              " be iMproved, required
+set number		      " set line numbers
+syntax on                     " syntax highlighting 
 filetype off                  " required
+set belloff=all               " no beeping or flashing
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -18,7 +21,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdtree'
-
+Plugin 'valloric/youcompleteme'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
