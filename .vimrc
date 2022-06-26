@@ -22,6 +22,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdtree'
 Plugin 'valloric/youcompleteme'
+Plugin 'sainnhe/sonokai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -37,3 +38,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+colorscheme sonokai
+let g:airline_theme = 'sonokai'
