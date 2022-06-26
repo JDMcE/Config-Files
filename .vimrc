@@ -41,3 +41,6 @@ filetype plugin indent on    " required
 
 colorscheme sonokai
 let g:airline_theme = 'sonokai'
+
+set tabstop=4
+set shiftwidth=4
