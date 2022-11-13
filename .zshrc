@@ -99,6 +99,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias tns="tmux new -s"
+alias tks="tmux kill-session -a"
+alias tls="tmux list-sessions"
+alias tas="tmux attach-session -t" 
+
+
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
