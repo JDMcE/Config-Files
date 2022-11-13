@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tns="tmux new -s"
-alias tks="tmux kill-session -a"
+alias tks="tmux kill-session -t"
 alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t" 
 
