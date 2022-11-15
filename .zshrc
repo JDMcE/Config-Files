@@ -103,6 +103,7 @@ alias tns="tmux new -s"
 alias tks="tmux kill-session -t"
 alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t" 
+alias xclip="xclip -sel clip"
 
 
 export GOROOT=/usr/local/go
