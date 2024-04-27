@@ -3,9 +3,5 @@ set number		      " set line numbers
 syntax on                     " syntax highlighting 
 filetype off                  " required
 set belloff=all               " no beeping or flashing
-
-colorscheme sonokai
-let g:airline_theme = 'sonokai'
-
 set tabstop=4
 set shiftwidth=4
