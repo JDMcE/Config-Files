@@ -70,7 +70,13 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions colorize zsh-syntax-highlighting)
+plugins=(git
+       	zsh-autosuggestions
+	zsh-syntax-highlighting
+       	colorize
+	catimg
+	colored-man-pages
+	tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,13 +105,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias tns="tmux new -s"
-alias tks="tmux kill-session -t"
-alias tls="tmux list-sessions"
-alias tas="tmux attach-session -t" 
-alias xclip="xclip -sel clip"
+#alias tns="tmux new -s"
+#alias tks="tmux kill-session -t"
+#alias tls="tmux list-sessions"
+#alias tas="tmux attach-session -t" 
+#alias xclip="xclip -sel clip"
 
 
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+#export GOROOT=/usr/local/go
+#export GOPATH=$HOME/go
+#export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
