@@ -71,10 +71,12 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
+		zsh-syntax-highlighting
+		zsh-autosuggestions
        	colorize
-	catimg
-	colored-man-pages
-	tmux)
+		catimg
+		colored-man-pages
+		tmux)
 
 source $ZSH/oh-my-zsh.sh
 
