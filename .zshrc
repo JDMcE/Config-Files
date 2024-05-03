@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tns="tmux new -s"
 alias tks="tmux kill-session -t"
+alias tksv="tmux kill-server"
 alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t" 
 #alias xclip="xclip -sel clip"
