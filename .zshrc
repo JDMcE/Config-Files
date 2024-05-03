@@ -41,7 +41,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -71,8 +71,6 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
-       	zsh-autosuggestions
-	zsh-syntax-highlighting
        	colorize
 	catimg
 	colored-man-pages
@@ -105,10 +103,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#alias tns="tmux new -s"
-#alias tks="tmux kill-session -t"
-#alias tls="tmux list-sessions"
-#alias tas="tmux attach-session -t" 
+alias tns="tmux new -s"
+alias tks="tmux kill-session -t"
+alias tls="tmux list-sessions"
+alias tas="tmux attach-session -t" 
 #alias xclip="xclip -sel clip"
 
 
