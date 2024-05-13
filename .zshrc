@@ -76,7 +76,7 @@ plugins=(git
        	colorize
 		catimg
 		colored-man-pages
-		tmux)
+		)
 
 source $ZSH/oh-my-zsh.sh
 
