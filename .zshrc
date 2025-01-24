@@ -110,6 +110,7 @@ alias tks="tmux kill-session -t"
 alias tksv="tmux kill-server"
 alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t" 
+alias mi="micro"
 #alias xclip="xclip -sel clip"
 
 
