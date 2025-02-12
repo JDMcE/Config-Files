@@ -15,7 +15,7 @@ echo "Installing micro theme ..."
 git clone https://github.com/dracula/micro.git
 
 if [ ! -d "$HOME/.config/micro/colorschemes/" ]; then
-  mkdir $HOME/.config/micro/colorschemes/
+  mkdir -p $HOME/.config/micro/colorschemes/
 fi
 
 ln -s $HOME/Config-Files/micro/dracula.micro $HOME/.config/micro/colorschemes/dracula.micro
