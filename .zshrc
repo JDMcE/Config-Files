@@ -115,8 +115,8 @@ alias fz="fzf"
 #alias xclip="xclip -sel clip"
 
 # Set up fzf key bindings and fuzzy completion
-# Open in tmux popup if on tmux, otherwise use --height mode
-export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
-source <(fzf --zsh)
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top --style minimal --preview "fzf-preview.sh {}" --bind "focus:transform-header:file --brief {}"'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 
 export MICRO_TRUECOLOR=1
