@@ -111,11 +111,12 @@ alias tksv="tmux kill-server"
 alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t" 
 alias mi="micro"
+alias fz="fzf"
 #alias xclip="xclip -sel clip"
 
-
-#export GOROOT=/usr/local/go
-#export GOPATH=$HOME/go
-#export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+# Set up fzf key bindings and fuzzy completion
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+source <(fzf --zsh)
 
 export MICRO_TRUECOLOR=1
