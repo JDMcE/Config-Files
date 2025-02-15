@@ -35,13 +35,11 @@ echo "Installing Tmux Plugin Manager"
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 # Micro colorscheme
-echo "Installing micro theme ..."
-git clone https://github.com/dracula/micro.git
-
+echo "Micro setup ..."
 if [ ! -d "$HOME/.config/micro/colorschemes/" ]; then
   mkdir -p $HOME/.config/micro/colorschemes/
 fi
-ln -s $HOME/Config-Files/micro/dracula.micro $HOME/.config/micro/colorschemes/dracula.micro
+ln -s $HOME/Config-Files/dracula.micro $HOME/.config/micro/colorschemes/dracula.micro
 ln -s $HOME/Config-Files/bindings.json $HOME/.config/micro/bindings.json
 
 # Link files
