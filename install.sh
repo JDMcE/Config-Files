@@ -42,6 +42,7 @@ if [ ! -d "$HOME/.config/micro/colorschemes/" ]; then
   mkdir -p $HOME/.config/micro/colorschemes/
 fi
 ln -s $HOME/Config-Files/micro/dracula.micro $HOME/.config/micro/colorschemes/dracula.micro
+ln -s $HOME/Config-Files/bindings.json $HOME/.config/micro/bindings.json
 
 # Link files
 echo "Installing config files ..."
