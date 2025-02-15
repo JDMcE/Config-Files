@@ -39,8 +39,9 @@ echo "Micro setup ..."
 if [ ! -d "$HOME/.config/micro/colorschemes/" ]; then
   mkdir -p $HOME/.config/micro/colorschemes/
 fi
-ln -s $HOME/Config-Files/dracula.micro $HOME/.config/micro/colorschemes/dracula.micro
-ln -s $HOME/Config-Files/bindings.json $HOME/.config/micro/bindings.json
+ln -s $HOME/Config-Files/micro/dracula.micro $HOME/.config/micro/colorschemes/dracula.micro
+ln -s $HOME/Config-Files/micro/bindings.json $HOME/.config/micro/bindings.json
+ln -s $HOME/Config-Files/micro/settings.json $HOME/.config/micro/settings.json
 
 # Link files
 echo "Installing config files ..."
@@ -51,5 +52,4 @@ ln -s $HOME/Config-Files/.vimrc $HOME/.vimrc
 
 echo -e "\n\nTODO:"
 echo "^a-I in tmux to install plugins"
-echo "^e -> 'set colorscheme dracula' in micro"
 echo "Done :)"

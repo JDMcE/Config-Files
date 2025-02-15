@@ -6,6 +6,5 @@
     "Alt-o":"HSplit",
     "Alt-e":"VSplit",
     "Ctrl-Delete":"DeleteWordRight",
-    "Alt-a":"SelectAll",
-    "Alt-p":"command-edit:textfilter "
+    "Alt-a":"SelectAll"
 }
