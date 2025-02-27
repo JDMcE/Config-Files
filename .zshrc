@@ -48,7 +48,8 @@ alias fz="fzf"
 export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border top --style minimal --preview "fzf-preview.sh {}" --bind "focus:transform-header:file --brief {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+# Uncomment If fzf keybinds dont work (e.g. Ctrl-T, Ctrl-R)
+#source /usr/share/doc/fzf/examples/key-bindings.zsh
+#source /usr/share/doc/fzf/examples/completion.zsh
 
 export MICRO_TRUECOLOR=1
