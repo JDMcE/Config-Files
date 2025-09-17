@@ -52,4 +52,13 @@ export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border top --style mini
 #source /usr/share/doc/fzf/examples/key-bindings.zsh
 #source /usr/share/doc/fzf/examples/completion.zsh
 
+#sothat tmux and zsh agree (heplps with copy/paste)
+if [[ -n $TMUX ]]; then
+  export TERM="tmux-256color"
+else
+  export TERM="xterm-256color"
+fi
+
+
+
 export MICRO_TRUECOLOR=1
