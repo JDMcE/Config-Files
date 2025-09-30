@@ -60,5 +60,10 @@ else
 fi
 
 
+# Auto-start or attach to tmux
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    # Try to attach to existing session, or create new one
+    tmux attach-session -t 0 || tmux new-session -s 0
+fi
 
 export MICRO_TRUECOLOR=1
