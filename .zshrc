@@ -66,4 +66,3 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach-session -t 0 || tmux new-session -s 0
 fi
 
-export MICRO_TRUECOLOR=1
