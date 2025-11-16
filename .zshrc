@@ -42,6 +42,12 @@ alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t" 
 alias mi="micro"
 alias fz="fzf"
+
+# nmap
+alias nmap_full_tcp='nmap -sC -sV -p- -oA nmap/full_tcp -iL $scope -v'
+alias nmap_common_ports='nmap -sC -sV -oA nmap/common_ports -iL $scope -v'
+alias nmap_livehost_fast='nmap -PE -PP -PM -v -sn -iL $scope -oA nmap/live_hosts -v'
+
 #alias xclip="xclip -sel clip"
 
 # Set up fzf key bindings and fuzzy completion
