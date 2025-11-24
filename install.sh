@@ -23,9 +23,10 @@ if $installmissing; then
 	fi
 fi
 
-echo "Installing OhMyZsh plugins ..."
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+echo "Installing plugins ..."
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/Config-Files/plugins/zsh-syntax-highlighting
+
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/Config-Files/plugins/zsh-autosuggestions
 
 
 echo "Installing Tmux Plugin Manager"
