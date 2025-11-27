@@ -66,7 +66,7 @@ export KEYTIMEOUT=1
 # Show vi mode in prompt
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="%{$fg_bold[yellow]%} [NORMAL]%{$reset_color%}"
-    PROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%{$fg[cyan]%}➜ %{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}${vcs_info_msg_0_} '
+    PROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%{$fg[green]%}➜ %{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}${vcs_info_msg_0_} '
     zle reset-prompt
 }
 zle -N zle-line-init
