@@ -219,6 +219,7 @@ alias tas="tmux attach-session -t"
 
 # fzf
 alias fz="fzf"
+alias nv="nvim"
 
 # ============================================================================
 # FUNCTIONS (Plugin-like functionality)
