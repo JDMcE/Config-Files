@@ -107,6 +107,18 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Splitting
+vim.keymap.set("n", "<leader>sv", ":split<CR>", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sh", ":vsplit<CR>", { desc = "Split window horizontally" })
+
+-- Behaviours
+vim.opt.path:append("**")                          -- include subdirectories in search
+vim.opt.selection = "exclusive"                    -- selection behaviour
+
+-- Buffer navigation
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
+
 -- Quick save
 vim.keymap.set('n', '<leader>w', ':w<CR>', { silent = true, noremap = true }) -- nnoremap <leader>w :w<CR> 
 
@@ -118,6 +130,152 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Copy Full File-Path
+vim.keymap.set("n", "<leader>pa", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	print("file:", path)
+end)
+
+-- Auto-resize splits when window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+  group = augroup,
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
+})
+
+-- -------------------
+-- Status Line
+-- -------------------
+
+-- Git branch function
+local function git_branch()
+  local branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
+  if branch ~= "" then
+    return "  " .. branch .. " "
+  end
+  return ""
+end
+
+-- File type with icon
+local function file_type()
+  local ft = vim.bo.filetype
+  local icons = {
+    lua = "[LUA]",
+    python = "[PY]",
+    javascript = "[JS]",
+    html = "[HTML]",
+    css = "[CSS]",
+    json = "[JSON]",
+    markdown = "[MD]",
+    vim = "[VIM]",
+    sh = "[SH]",
+  }
+
+  if ft == "" then
+    return "  "
+  end
+
+  return (icons[ft] or ft)
+end
+
+-- Word count for text files
+local function word_count()
+  local ft = vim.bo.filetype
+  if ft == "markdown" or ft == "text" or ft == "tex" then
+    local words = vim.fn.wordcount().words
+    return "  " .. words .. " words "
+  end
+  return ""
+end
+
+-- File size
+local function file_size()
+  local size = vim.fn.getfsize(vim.fn.expand('%'))
+  if size < 0 then return "" end
+  if size < 1024 then
+    return size .. "B "
+  elseif size < 1024 * 1024 then
+    return string.format("%.1fK", size / 1024)
+  else
+    return string.format("%.1fM", size / 1024 / 1024)
+  end
+end
+
+-- Mode indicators with icons
+local function mode_icon()
+  local mode = vim.fn.mode()
+  local modes = {
+    n = "NORMAL",
+    i = "INSERT",
+    v = "VISUAL",
+    V = "V-LINE",
+    ["\22"] = "V-BLOCK",  -- Ctrl-V
+    c = "COMMAND",
+    s = "SELECT",
+    S = "S-LINE",
+    ["\19"] = "S-BLOCK",  -- Ctrl-S
+    R = "REPLACE",
+    r = "REPLACE",
+    ["!"] = "SHELL",
+    t = "TERMINAL"
+  }
+  return modes[mode] or "  " .. mode:upper()
+end
+
+_G.mode_icon = mode_icon
+_G.git_branch = git_branch
+_G.file_type = file_type
+_G.file_size = file_size
+
+vim.cmd([[
+  highlight StatusLineBold gui=bold cterm=bold
+]])
+
+-- Function to change statusline based on window focus
+local function setup_dynamic_statusline()
+  vim.api.nvim_create_autocmd({"WinEnter", "BufEnter"}, {
+    callback = function()
+    vim.opt_local.statusline = table.concat {
+      "  ",
+      "%#StatusLineBold#",
+      "%{v:lua.mode_icon()}",
+      "%#StatusLine#",
+      " │ %f %h%m%r",
+      "%{v:lua.git_branch()}",
+      " │ ",
+      "%{v:lua.file_type()}",
+      " | ",
+      "%{v:lua.file_size()}",
+      "%=",                     -- Right-align everything after this
+      "%l:%c  %P ",             -- Line:Column and Percentage
+    }
+    end
+  })
+  vim.api.nvim_set_hl(0, "StatusLineBold", { bold = true })
+
+  vim.api.nvim_create_autocmd({"WinLeave", "BufLeave"}, {
+    callback = function()
+      vim.opt_local.statusline = "  %f %h%m%r │ %{v:lua.file_type()} | %=  %l:%c   %P "
+    end
+  })
+end
+
+setup_dynamic_statusline()
+
+
+
+-- Move lines up/down
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+-- Better indenting in visual mode
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 -- Toggle spell checking
 vim.keymap.set({ 'n', 'i' }, '<leader>ss', ':setlocal spell!<cr>') -- map <leader>ss :setlocal spell!<cr> [cite: 7]
@@ -142,4 +300,4 @@ vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<cr>')
 
 
 -- Colorscheme
-vim.cmd('colorscheme habamax')
+vim.cmd('colorscheme unokai')
