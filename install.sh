@@ -122,6 +122,7 @@ if $installmissing; then
         sudo tar -C /opt -xzf "${NVIM_FILE}"
         sudo ln -sf "/opt/${NVIM_DIR}/bin/nvim" /usr/local/bin/nvim
         rm "${NVIM_FILE}"
+       curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         log_info "Neovim installed successfully"
     else
         log_info "neovim already installed, skipping"
