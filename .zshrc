@@ -61,16 +61,16 @@ source $HOME/Config-Files/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # ============================================================================
 # Use vim keybindings
 bindkey -v
-export KEYTIMEOUT=1
+#export KEYTIMEOUT=1
 
 # Show vi mode in prompt
-function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[yellow]%} [NORMAL]%{$reset_color%}"
-    PROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%{$fg[green]%}➜ %{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}${vcs_info_msg_0_} '
-    zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
+# function zle-line-init zle-keymap-select {
+#    VIM_PROMPT="%{$fg_bold[yellow]%} [NORMAL]%{$reset_color%}"
+#    PROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%{$fg[green]%}➜ %{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}${vcs_info_msg_0_} '
+    #zle reset-prompt
+# }
+# zle -N zle-line-init
+# zle -N zle-keymap-select
 
 # Better history search
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
@@ -97,6 +97,7 @@ bindkey "^[[1;5D" backward-word
 # ============================================================================
 # Enable parameter expansion, command substitution and arithmetic expansion
 setopt PROMPT_SUBST
+export VIRTUAL_ENV_DISABLE_PROMPT=1 # Diable the default python prompt change
 
 #colours
 autoload -U colors && colors
@@ -115,7 +116,7 @@ zstyle ':vcs_info:git:*' actionformats ' %F{cyan}git:(%F{red}%b|%a%F{cyan})%f%u%
 
 # Robbyrussell theme prompt
 # Format: ➜  directory git:(branch) ✗
-PROMPT='%{$fg[cyan]%}➜ %{$reset_color%} %{$fg[green]%}%c%{$reset_color%}${vcs_info_msg_0_} '
+PROMPT='$(virtualenv_info)% %{$fg[cyan]%}➜ %{$reset_color%} %{$fg[green]%}%c%{$reset_color%}${vcs_info_msg_0_} '
 
 # Right prompt is empty in robbyrussell theme
 #RPROMPT=''
@@ -282,6 +283,13 @@ tree() {
         command tree "$@"
     else
         find "${1:-.}" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+    fi
+}
+
+# venv prompt check
+function virtualenv_info {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo "($(basename "$VIRTUAL_ENV")) "
     fi
 }
 
