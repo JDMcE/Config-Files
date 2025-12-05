@@ -145,7 +145,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Create symlinks for config files
 create_symlink "$SCRIPT_DIR/.tmux.conf" "$HOME/.tmux.conf"
 create_symlink "$SCRIPT_DIR/.vimrc" "$HOME/.vimrc"
-create_symlink "$SCRIPT_DIR/.config/nvim/" "$HOME/.config/nvim/"
+create_symlink "$SCRIPT_DIR/.config/nvim" "$HOME/.config/nvim"
 
 # Use kali zsh if on Kali, otherwise use regular zshrc
 if $onKali; then
