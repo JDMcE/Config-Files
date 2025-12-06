@@ -60,7 +60,7 @@ source $HOME/Config-Files/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # KEY BINDINGS
 # ============================================================================
 # Use vim keybindings
-bindkey -v
+# bindkey -v
 #export KEYTIMEOUT=1
 
 # Show vi mode in prompt
@@ -104,7 +104,14 @@ autoload -U colors && colors
 
 # Load version control info
 autoload -Uz vcs_info
-precmd() { vcs_info }
+precmd() { 
+  if [[ "$PWD" =~ ^/mnt/ ]]; then 
+    zstyle ':vcs_info:*' check-for-changes false
+  else
+    zstyle ':vcs_info:*' check-for-changes true
+  fi
+  vcs_info
+}
 
 # Configure vcs_info for git
 zstyle ':vcs_info:*' enable git
@@ -116,7 +123,7 @@ zstyle ':vcs_info:git:*' actionformats ' %F{cyan}git:(%F{red}%b|%a%F{cyan})%f%u%
 
 # Robbyrussell theme prompt
 # Format: ➜  directory git:(branch) ✗
-PROMPT='$(virtualenv_info)% %{$fg[cyan]%}➜ %{$reset_color%} %{$fg[green]%}%c%{$reset_color%}${vcs_info_msg_0_} '
+PROMPT='$(virtualenv_info) %{$fg[cyan]%}> %{$reset_color%} %{$fg[green]%}%c%{$reset_color%}${vcs_info_msg_0_} '
 
 # Right prompt is empty in robbyrussell theme
 #RPROMPT=''
