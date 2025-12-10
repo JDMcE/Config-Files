@@ -116,8 +116,8 @@ precmd() {
 # Configure vcs_info for git
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr ' %F{yellow}✗%f'
-zstyle ':vcs_info:*' stagedstr ' %F{yellow}✗%f'
+zstyle ':vcs_info:*' unstagedstr ' %F{yellow}X%f'
+zstyle ':vcs_info:*' stagedstr ' %F{yellow}X%f'
 zstyle ':vcs_info:git:*' formats ' %F{cyan}git:(%F{red}%b%F{cyan})%f%u%c'
 zstyle ':vcs_info:git:*' actionformats ' %F{cyan}git:(%F{red}%b|%a%F{cyan})%f%u%c'
 
@@ -228,6 +228,9 @@ alias tas="tmux attach-session -t"
 # fzf
 alias fz="fzf"
 alias nv="nvim"
+
+# ip colours
+alias ip="ip -c"
 
 # ============================================================================
 # FUNCTIONS (Plugin-like functionality)
