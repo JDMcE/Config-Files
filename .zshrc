@@ -123,7 +123,7 @@ zstyle ':vcs_info:git:*' actionformats ' %F{cyan}git:(%F{red}%b|%a%F{cyan})%f%u%
 
 # Robbyrussell theme prompt
 # Format: ➜  directory git:(branch) ✗
-PROMPT='$(virtualenv_info) %{$fg[cyan]%}> %{$reset_color%} %{$fg[green]%}%c%{$reset_color%}${vcs_info_msg_0_} '
+PROMPT='$(virtualenv_info) %{$fg[green]%}> %{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}${vcs_info_msg_0_} '
 
 # Right prompt is empty in robbyrussell theme
 #RPROMPT=''
