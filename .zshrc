@@ -92,6 +92,19 @@ bindkey "^[[3~" delete-char
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# Ctrl + Backspace to delete previous word
+bindkey '^H' backward-kill-word
+
+# Ctrl + Delete to delete next word
+bindkey '^[[3;5~' kill-word
+
+# makes Ctrl + backspace/delete a bit more natural
+autoload -U select-word-style
+select-word-style bash
+
+# Removes common delimiters from WORDCHARS to mimic Bash
+WORDCHARS=${WORDCHARS//[\/.\-]}
+
 # ============================================================================
 # PROMPT CONFIGURATION
 # ============================================================================
