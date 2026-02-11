@@ -9,11 +9,9 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 installmissing=false
-onKali=false
-while getopts ":ik" opt; do
+while getopts ":i" opt; do
   case $opt in
   i) installmissing=true ;;
-  k) onKali=true ;;
   \?)
     echo -e "${RED}Invalid option: -$OPTARG${NC}" >&2
     exit 1
@@ -128,10 +126,9 @@ if $installmissing; then
   fi
 fi
 
-log_info "Installing ZSH plugins..."
-mkdir -p "$HOME/Config-Files/plugins"
-clone_or_update "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$HOME/Config-Files/plugins/zsh-syntax-highlighting"
-clone_or_update "https://github.com/zsh-users/zsh-autosuggestions.git" "$HOME/Config-Files/plugins/zsh-autosuggestions"
+log_info "Initializing ZSH plugins (git submodules)..."
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+git -C "$REPO_ROOT" submodule update --init --recursive
 
 log_info "Installing Tmux Plugin Manager..."
 mkdir -p "$HOME/.tmux/plugins"
@@ -140,20 +137,13 @@ clone_or_update "https://github.com/tmux-plugins/tpm" "$HOME/.tmux/plugins/tpm"
 # Link config files
 log_info "Installing config files..."
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # Create symlinks for config files
-create_symlink "$SCRIPT_DIR/.tmux.conf" "$HOME/.tmux.conf"
-create_symlink "$SCRIPT_DIR/.vimrc" "$HOME/.vimrc"
-create_symlink "$SCRIPT_DIR/.config/nvim" "$HOME/.config/nvim"
-
-# Use kali zsh if on Kali, otherwise use regular zshrc
-if $onKali; then
-  log_info "Using Kali-specific zshrc"
-  create_symlink "$SCRIPT_DIR/.kali_zshrc" "$HOME/.zshrc"
-else
-  create_symlink "$SCRIPT_DIR/.zshrc" "$HOME/.zshrc"
-fi
+create_symlink "$REPO_ROOT/home/.tmux.conf" "$HOME/.tmux.conf"
+create_symlink "$REPO_ROOT/home/.vimrc" "$HOME/.vimrc"
+create_symlink "$REPO_ROOT/home/.zshrc" "$HOME/.zshrc"
+create_symlink "$REPO_ROOT/config/nvim" "$HOME/.config/nvim"
 
 log_info ""
 log_info "Installation complete!"

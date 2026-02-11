@@ -1,0 +1,7 @@
+# Backup files
+*.backup.*
+*.old
+
+# Neovim generated files
+config/nvim/plugin/
+config/nvim/lazy-lock.json
