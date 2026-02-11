@@ -221,8 +221,8 @@ alias dlog='docker logs -f'
 # Python aliases
 alias py='python3'
 alias pip='pip3'
-alias venv='python3 -m venv .venv'
-alias activate='source  .venv/bin/activate'
+alias venv='python3 -m .venv'
+alias activate='source .venv/bin/activate'
 
 # Quick edits
 alias zshrc='${EDITOR:-vim} ~/.zshrc'
