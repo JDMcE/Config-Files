@@ -238,6 +238,12 @@ alias tksv="tmux kill-server"
 alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t" 
 
+# fd-find
+alias fd="fdfind"
+
+# bat (only needed on some distros ?)
+alias bat="batcat"
+
 # fzf
 alias fz="fzf"
 alias nv="nvim"
@@ -340,7 +346,7 @@ export LC_ALL=en_US.UTF-8
 
 # PATH additions (adjust as needed)
 # export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-
+export PATH="$HOME/.config/emacs/bin:$PATH"
 # ============================================================================
 # CUSTOM ADDITIONS
 # ============================================================================
