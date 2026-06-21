@@ -238,15 +238,13 @@ alias tksv="tmux kill-server"
 alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t" 
 
-# fd-find
+# Tools
 alias fd="fdfind"
-
-# bat (only needed on some distros ?)
 alias bat="batcat"
-
-# fzf
 alias fz="fzf"
 alias nv="nvim"
+alias mi="micro"
+
 
 # ip colours
 alias ip="ip -c"
