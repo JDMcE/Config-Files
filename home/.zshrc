@@ -334,8 +334,8 @@ function y() {
 # ============================================================================
 
 # Default editor
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 # Less options
 export LESS='-R -i -M -F -X'
