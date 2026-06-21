@@ -244,7 +244,7 @@ alias bat="batcat"
 alias fz="fzf"
 alias nv="nvim"
 alias mi="micro"
-
+alias z="zoxide"
 
 # ip colours
 alias ip="ip -c"
