@@ -144,6 +144,7 @@ create_symlink "$REPO_ROOT/home/.tmux.conf" "$HOME/.tmux.conf"
 create_symlink "$REPO_ROOT/home/.vimrc" "$HOME/.vimrc"
 create_symlink "$REPO_ROOT/home/.zshrc" "$HOME/.zshrc"
 create_symlink "$REPO_ROOT/config/nvim" "$HOME/.config/nvim"
+create_symlink "$REPO_ROOT/config/yazi" "$HOME/.config/yazi"
 
 log_info ""
 log_info "Installation complete!"
